@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Customer Churn Prediction Lab setup
+Parameters: 
+  UniqueID: 
+    Type: String
+    Default: churn
+    Description: Enter your initials in lower case as a unique identifier for components created. Use a minimum of three characters.  Change the default value only if you are sharing the AWS account.
+    AllowedPattern: "^([a-z]|(d(?!d{0,2}.d{1,3}.d{1,3}.d{1,3})))([a-zd]|(.(?!(.|-)))|(-(?!.))){1,61}[a-zd.]$"
+
+Resources:
+  SageMakerNotebookInstance:
+    Type: AWS::SageMaker::NotebookInstance
+    Properties: 
+      InstanceType: ml.t3.medium
+      NotebookInstanceName:
+        Fn::Join:
+            - ""
+            - - "CustomerChurnPrediction-Notebook-"
+              - !Ref UniqueID
+      RoleArn: !GetAtt [SageMakerNotebookInstanceRole, Arn]
+      
+  SageMakerNotebookInstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          Effect: Allow
+          Principal:
+            Service: sagemaker.amazonaws.com
+          Action: sts:AssumeRole
+      ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/AmazonSageMakerFullAccess
+          - arn:aws:iam::aws:policy/AmazonS3FullAccess
+      RoleName:
+        Fn::Join:
+           - ""
+           - - "SageMakerNotebookInstance-ServiceRole"
+             - !Ref UniqueID
+             - "-"
+             - !Select
+              - 0
+              - !Split
+               - "-"
+               - !Select
+                 - 2
+                 - !Split
+                   - "/"
+                   - !Ref "AWS::StackId"
+
+Outputs:
+      SageMakerNotebookInstance:
+        Description: The ID of the SageMaker Notebook Instance
+        Value: !Ref SageMakerNotebookInstance
