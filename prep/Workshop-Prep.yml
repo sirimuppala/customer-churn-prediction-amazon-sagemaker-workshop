@@ -8,6 +8,25 @@ Parameters:
     AllowedPattern: "^([a-z]|(d(?!d{0,2}.d{1,3}.d{1,3}.d{1,3})))([a-zd]|(.(?!(.|-)))|(-(?!.))){1,61}[a-zd.]$"
 
 Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      VersioningConfiguration:
+        Status: Enabled
+      BucketName:
+        Fn::Join:
+          - ""
+          - - "customer-churn-prediction-"
+            - !Ref UniqueID
+            - !Select
+              - 0
+              - !Split
+                - "-"
+                - !Select
+                  - 2
+                  - !Split
+                    - "/"
+                    - !Ref "AWS::StackId"
   SageMakerNotebookInstance:
     Type: AWS::SageMaker::NotebookInstance
     Properties: 

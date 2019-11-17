@@ -4,8 +4,8 @@ Workshop to build, train and deploy XGBoost model for customer churn prediction 
 Losing customers is costly for any business. Proactively identifying customers that are likely to leave early on gives 
 the business a chance to offer customers appropriate incentives to stay. This is the problem of customer churn prediction.
 
-In this lab, we will use a well understood machine learning supervised learning algorithm
-XGBoost for customer churn prediction.  In particular, we will use Amazon SageMaker's built-in XGBoost algorithm.  We will also use Amazon SageMaker managed service to build, train and deploy the XGBoost customer churn prediction model.
+In this lab, we will use XGBoost, a well understood machine learning supervised learning algorithm
+for customer churn prediction.  In particular, we will use Amazon SageMaker's built-in XGBoost algorithm.  We will also use Amazon SageMaker managed service to build, train and deploy the XGBoost customer churn prediction model.
 
 Let’s get started. 
 
@@ -32,27 +32,31 @@ In this step, you will execute a Cloud Formation template to setup workshop envi
 
 ##### Detailed Steps
 
-1.1. Download this git repository by either cloning the repository or downloading the *zip
+1.1. Download this git repository by either cloning the repository or downloading the zip
 
-1.2. Login to the [AWS Console](https://https://console.aws.amazon.com/) and enter your credentials
+1.2. Login to the [AWS Console](https://console.aws.amazon.com/) and enter your credentials
 
 1.3. Under **Services**, select search for and select [CloudFormation](https://console.aws.amazon.com/cloudformation)
 
-1.4. Click **Create Stack** buttton
+1.4. Click **Create Stack** button and select "With new resources (standard)" option
 
    ![CreateStack](images/CreateStack.png)
    
 1.5. Under **Select Template**:
+
     * Click radio button next to 'Upload a template to Amazon S3', then click **Browse**
+    
     * From the local repository cloned to your machine in the detailed step 1, select the file ./prep/Workshop-Prep.yml
+    
     * Click **Open**
     ![CreateStack](images/CreateStack-SpecifyTemplate.png)
     
 1.6. Under **Specify Stack Details**, enter: 
 
-   * **Stack Name**: LSTM-WorkshopSetup 
+   *  **Stack name**: Customer-Churn-Prediction-Stack
 
    *  **UniqueID**: Enter *yourinitials* in lower case (Example: jdd)
+   (Note : Change the default value only if you are sharing the AWS account with other participants)
 
    ![CreateStack](images/CreateStack-SpecifyStackDetails.png)
 
@@ -70,10 +74,11 @@ In this step, you will execute a Cloud Formation template to setup workshop envi
 
 1.11. After a few minutes, you will see your stack Status change to '**CREATE_COMPLETE**'.  You're encouraged to go explore the resources created as part of this initial setup. 
 
+1.12. In the S3 console, make sure that the S3 bucket is created and make note of the bucket name.
 
-#### Step 2 - Build, train and deploy LSTM Model
+
+#### Step 2 - Build, train and deploy XGBoost customer churn prediction model
 In this step, you will open the SageMaker notebook instance created in Step 1.  
-To train, deploy the  XGBoost model and make predictions execute open the example notebook and execute each cell.
   
 ##### Detailed Steps
  
@@ -82,10 +87,24 @@ To train, deploy the  XGBoost model and make predictions execute open the exampl
 
 2.2. Click "Open Jupyter"
 
-2.3. This shows the contents
+2.3. This shows the contents of the notebook instance.  Should be empty at this point.
 ![CreateStack](images/JupyterView.png) 
 
 2.4 Open "SageMaker Examples --> Introduction to Applying Machine Learning --> xgboost_customer_churn.ipynb"
 
-2.5. For rest of the workshop, follow instructions in the notebook and execute each cell of the notebook.  
+![CreateStack](images/UseExample_XGBoost_CustomerChurn.png) 
+
+
+![CreateStack](images/UseExample_CreateCopy.png) 
+
+If a "Kernel not found" message pops up, select "conda_python3" and click 'Set Kernel'
+
+![CreateStack](images/SetKernel_Python3.png) 
+
+2.5. Open the notebook.  In the first code cell, set the bucket name to the name of bucket created in Step 1.
+
+2.6. For rest of the workshop, follow instructions in the notebook and execute each cell of the notebook.  
+
+
+
 
