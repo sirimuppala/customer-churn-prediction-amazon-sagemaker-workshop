@@ -27,10 +27,35 @@ Resources:
                   - !Split
                     - "/"
                     - !Ref "AWS::StackId"
+  SageMakerNotebookLifecycleConfig:
+    Type: AWS::SageMaker::NotebookInstanceLifecycleConfig
+    Properties:
+      NotebookInstanceLifecycleConfigName:
+        Fn::Join:
+          - ""
+          - - "customer-churn-prediction-Lifecycle-Config"
+            - !Ref UniqueID
+      OnCreate:
+        - Content:
+            Fn::Base64: !Sub |
+              #!/bin/bash
+              set -e
+              sudo -i -u ec2-user bash << EOF
+              echo "Setup the Workshop"
+              pwd
+              git clone https://github.com/sirimuppala/customer-event-sequence-prediction.git
+              pwd
+              ls -la
+              cp -R /home/ec2-user/customer-event-sequence-prediction/* /home/ec2-user/SageMaker/
   SageMakerNotebookInstance:
     Type: AWS::SageMaker::NotebookInstance
     Properties: 
-      InstanceType: ml.t3.medium
+      InstanceType: ml.m4.xlarge
+      LifecycleConfigName:
+        Fn::Join:
+          - ""
+          - - "customer-churn-prediction-Lifecycle-Config"
+            - !Ref UniqueID
       NotebookInstanceName:
         Fn::Join:
             - ""

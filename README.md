@@ -87,23 +87,13 @@ In this step, you will open the SageMaker notebook instance created in Step 1.
 
 2.2. Click "Open Jupyter"
 
-2.3. This shows the contents of the notebook instance.  Should be empty at this point.
+2.3. This shows the contents of the notebook instance. 
 ![CreateStack](images/JupyterView.png) 
 
-2.4 Open "SageMaker Examples --> Introduction to Applying Machine Learning --> xgboost_customer_churn.ipynb"
+2.4. Click on "notebook/xgboost_customer_churn.ipynb" to open the notebook.  
 
-![CreateStack](images/UseExample_XGBoost_CustomerChurn.png) 
-
-
-![CreateStack](images/UseExample_CreateCopy.png) 
-
-If a "Kernel not found" message pops up, select "conda_python3" and click 'Set Kernel'
-
-![CreateStack](images/SetKernel_Python3.png) 
-
-2.5. Open the notebook.  In the first code cell, set the bucket name to the name of bucket created in Step 1.
-
-2.6. For rest of the workshop, follow instructions in the notebook and execute each cell of the notebook.  
+2.5. In the first code cell, specify the bucket name created in Step 1.  (bucket = '<<Specify bucket name>>')
+2.5. For rest of the workshop, follow instructions in the notebook and execute each cell of the notebook.  
 
 
 
