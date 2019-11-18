@@ -7,6 +7,9 @@ the business a chance to offer customers appropriate incentives to stay. This is
 In this lab, we will use XGBoost, a well understood machine learning supervised learning algorithm
 for customer churn prediction.  In particular, we will use Amazon SageMaker's built-in XGBoost algorithm.  We will also use Amazon SageMaker managed service to build, train and deploy the XGBoost customer churn prediction model.
 
+This lab is based on the Amazon SageMaker example notebook xgboost_customer_churn.ipynb at https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_applying_machine_learning/xgboost_customer_churn/xgboost_customer_churn.ipynb.
+Very minor modifications are made to accomodate the dataset used.
+
 Let’s get started. 
 
 ### Prerequisites
@@ -20,13 +23,14 @@ To run this workshop, you will need
 High level steps to run the workshop :
 
 1. Setup : Execute a cloudformation template that creates a Amazon SageMaker notebook.
-2. Build, train and deploy XGBoost model : Open the Jupyter notebook created in step 1 and execute the example notebook provided in SageMaker Examples --> Introduction to Applying Machine Learning --> xgboost_customer_churn.ipynb.
- 
+2. Build, train and deploy XGBoost model : Open the Jupyter notebook created in step 1 and execute notebook cells to examine data, train/deploy the XGBoost model and make predictions.
+
 #### Step 1 - Setup
 
 In this step, you will execute a Cloud Formation template to setup workshop environment by creating:
 
 * SageMaker Notebook Instance: This notebook instance will be used as our lab environment.
+* SageMaker Notebook lifecycle configuration: Lifecycle configuration created to automatically clone this workshop repository including the notebook instance included for this workshop.
 * IAM Role : Role attached to the notebook instance that allows access to an S3 bucket to save training data and trained models.
 
 
