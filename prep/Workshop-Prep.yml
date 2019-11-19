@@ -43,7 +43,7 @@ Resources:
               sudo -i -u ec2-user bash << EOF
               echo "Setup the Workshop"
               pwd
-              git clone https://github.com/sirimuppala/sirimuppala/customer-churn-prediction-amazon-sagemaker-workshop.git
+              git clone https://github.com/sirimuppala/customer-churn-prediction-amazon-sagemaker-workshop.git
               pwd
               ls -la
               mkdir /home/ec2-user/SageMaker/notebook
