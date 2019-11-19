@@ -43,10 +43,11 @@ Resources:
               sudo -i -u ec2-user bash << EOF
               echo "Setup the Workshop"
               pwd
-              git clone https://github.com/sirimuppala/customer-event-sequence-prediction.git
+              git clone https://github.com/sirimuppala/sirimuppala/customer-churn-prediction-amazon-sagemaker-workshop.git
               pwd
               ls -la
-              cp -R /home/ec2-user/customer-event-sequence-prediction/* /home/ec2-user/SageMaker/
+              mkdir /home/ec2-user/SageMaker/notebook
+              cp -R /home/ec2-user/customer-churn-prediction-amazon-sagemaker-workshop/notebook/* /home/ec2-user/SageMaker/notebook/
   SageMakerNotebookInstance:
     Type: AWS::SageMaker::NotebookInstance
     Properties: 
