@@ -7,8 +7,8 @@ the business a chance to offer customers appropriate incentives to stay. This is
 In this lab, we will use XGBoost, a well understood machine learning supervised learning algorithm
 for customer churn prediction.  In particular, we will use Amazon SageMaker's built-in XGBoost algorithm.  We will also use Amazon SageMaker managed service to build, train and deploy the XGBoost customer churn prediction model.
 
-This lab is based on the Amazon SageMaker example notebook xgboost_customer_churn.ipynb at https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_applying_machine_learning/xgboost_customer_churn/xgboost_customer_churn.ipynb.
-Very minor modifications are made to accomodate the dataset used.
+(Note : This workshop is based on the Amazon SageMaker example notebook xgboost_customer_churn.ipynb at https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_applying_machine_learning/xgboost_customer_churn/xgboost_customer_churn.ipynb.
+Very minor modifications are made to accomodate the dataset used.)
 
 Let’s get started. 
 
