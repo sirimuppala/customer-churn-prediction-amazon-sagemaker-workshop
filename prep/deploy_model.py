@@ -60,7 +60,7 @@ container = get_image_uri(boto3.Session().region_name, 'xgboost', '0.90-1')
 
 from time import gmtime, strftime
 
-model_name = "MoviePredictions-EndpointDataCaptureModel-" + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+model_name = "PD-MovieRecs-EndpointDataCaptureModel-" + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
 
 sm_client = boto3.client('sagemaker')
 
@@ -104,7 +104,7 @@ data_capture_configuration = {
      }
 }
 
-endpoint_config_name = 'XGBoost-MovieRec-DataCaptureEndpointConfig-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+endpoint_config_name = 'PD-MovieRecs-DataCaptureEndpointConfig-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
 print(endpoint_config_name)
 create_endpoint_config_response = sm_client.create_endpoint_config(
     EndpointConfigName = endpoint_config_name,
@@ -122,7 +122,7 @@ print("Endpoint Config Arn: " + create_endpoint_config_response['EndpointConfigA
 
 import time
 
-endpoint_name = 'XGBoost-MovieRec-DataCaptureEndpoint-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+endpoint_name = 'PD-MovieRecs-DataCaptureEndpoint-' + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
 print(endpoint_name)
 create_endpoint_response = sm_client.create_endpoint(
     EndpointName=endpoint_name,
